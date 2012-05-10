@@ -1,0 +1,334 @@
+﻿<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- end CSS-->
+
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body>
+
+  <div id="container">
+    <header>
+	  <img src="img/logo.png" />
+	  <div class="mainNavigation">
+		<ul class="navigation">
+		  <li><a href="index.html">Home</a></li>
+		  <li><a href="story.html">Game-Story</a></li>
+		  <li><a href="game_guide.html">Game-Guide</a></li>
+		  <li><a href="screens.html">Screenshots</a></li>
+		  <li><a href="project.html">Project</a></li>
+		  <li><a href="contact.html">Contact</a></li>
+		</ul>
+	  </div> 
+    </header>
+
+    <div id="main" role="main">
+	  <div id="top">
+		<h1>Game-Guide</h1>
+		<div style="float:right;">
+			<a style="margin-right:5px;" class="button medium red" href="http://notipi.com/vc/tracker/"><span>Report Issue</span></a>
+			<a class="button medium orange" href="#"><span>Download the game</span></a>
+		</div>
+	  </div>
+	  
+	  <div id="tab-container" class="tab-container">
+		<ul class='etabs'>
+		  <li class='tab'><a href="#tab-general">General Stuff</a></li>
+		  <li class='tab'><a href="#tab-units">Game Units</a></li>
+		  <li class='tab'><a href="#tab-player">Interface Overview</a></li>
+		</ul>
+	  
+		<div id="tab-general">
+		  <ol>
+			<li><a href="#what">What is Liquid Sands?</a>
+			<li><a href="#about">What is the game all about?</a>
+			<li><a href="#rules">What are the rules?</a>
+		  </ol>
+		  <br />
+		  
+		  <p id="what">
+			<h1>What is Liquid Sands?</h1>
+			<p>
+			  Liquid Sands is a round based strategy game
+			</p>
+		  </p>
+		  <br />
+	
+		  <p id="rules">
+			<h1>What is the game all about?</h1>
+			<p>
+			  The game is about fighting and trading to conquer all avaliable resources to win the game.
+			</p>
+		  </p>
+		  <br />
+	
+		  <p id="rules">
+			<h1>What are the rules?</h1>
+			<p>
+			  <b>German</b>
+			  <p>
+				<ol>
+				<li>Momentan können am Spiel 2 Spieler teilnehmen."</li>
+				<li>Gewinner ist wer als letzter überlebt oder die meisten Waren hat (noch nicht fertig implementiert!)."</li>
+				<li>Jeder Spieler bekommt eine Farbe zugewiesen und seine Spielfiguren werden in dieser Farbe markiert mit einem Symbol über der Einheit."</li>
+				<li>Der Spieler der momentan dran ist erkennt das an der kreisenden Markierung über seinen Einheiten."</li>
+				<li>Ob die eigene Einheit in dieser Runde bereits gezogen wurde erkennt man dadurch, dass das Symbol über dem Kopf nicht mehr kreist."</li>
+				<li>Abhängig von der Karte haben die Spieler bis zu 5 Einheiten mit unterschiedlichen Eigenschaften zur Verfügung."</li>
+				<li>Eine Eigenschaft ist z.B. die Reichweite in der eine Einheit laufen kann pro Zug oder die Last die sie tragen kann."</li>
+				<li>Die Sichtweite der Einheiten ist durch einen Nebelschleier begrenzt, der Felder außerhalb der Sichtweite verdeckt."</li>
+				<li>Zuerst beginnt der Spieler mit der grünen Farbe."</li>
+				<li>Das Spiel verläuft in Runden, d.h. die Spieler sind abwechselnd dran und jede Einheit darf pro Runde nur einmal gezogen werden."</li>
+				<li>Eine Runde ist vorbei, sobald alle Figuren einen Zug vollendet haben."</li>
+				<li>Ein vollendeter Zug besteht aus folgenden Handlungen:"</li>
+					<ol>
+						<li>Bewegen einer Figur bis zu ihrer aktuellen Maximalreichweite, danach können optional folgende Handlungen ausgeführt werden:"</li>
+						<li>
+						<ol>
+							<li>Falls am Ende des Bewegens neben der Figur eine andere Einheit steht, dann kann noch mit dieser Figur gekämpft oder gehandelt werden unabhängig davon, ob es eigene oder gegnerische Einheiten sind."</li>
+							<li>Kampf oder Handel wird gestartet durch die Buttons am rechten Rand 'Fight/Trade' und dann durch einen einfachen Mausklick auf die benachbarte Einheit."</li>
+							<li>Falls am Ende des Bewegens keine andere Figur neben der bewegten Einheit steht, ist der Zug vorbei."</li>
+						</ol>
+						</li>
+						<li>Sobald der Zug vorbei ist markiert man das mit dem Button 'I'm done with my move' oben rechts."</li>
+					</ol>
+				<li>Das Bewegen der eigenen Einheit kann nach folgenden Methoden ablaufen:"</li>
+					<ol>
+						<li>Falls der selektierte Pfad den die Einheit zurück legen soll länger ist, als die pro Runde erlaubte Maximalreichweite, dann besteht die Möglichkeit Bewegungen zu planen:"</li>
+						<li>
+							<ol>
+							<li>Entweder in der nächsten Runde automatisch den markierten weg weiter laufen ohne Nachfrage (automatischer Modus)."</li>
+							<li>oder nochmal nachgefragt zu werden, ob der Weg auch tatsächlich weiter verfolgt werden soll der vorher markiert wurde (manueller Modus)."</li>
+							</ol>
+						</li>
+						<li>Das Planungsmenü für die Bewegung erscheint durch selektieren einer Einheit dann eines Pfads mit einfachem Mausklick und danach durch einen Rechtsklick."</li>		
+						<li>Mit 'Undo' und 'Redo' kann die Pfad-Markierung auch rückgängig gemacht oder wiederholt werden."</li>
+					</ol>
+				<li>Das vollenden des Spiels ist momentan noch nicht fertig implementiert, daher kann es nur manuell beendet werden."</li>
+				</ol>
+			  </p>
+			</p>
+		  </p>
+		</div>
+		
+		<div id="tab-units">
+			<table style="borderstyle: node">
+			  <tr>
+				<td> <img src="img/jussuf.png"> </td>
+				<td valign="top">
+				  <h4> "Jussuf" the flying carpet </h4>
+				  <p>
+					Every child knows those standard flying rugware devices utilized by hurried merachants 
+					to serve their time-pressing business dealings.
+				  </p>
+				  <p>
+					As he is anyting but one of such low-quality rugware devices, don't ever dare 
+					dare to confuse "Jussuf" with one of those.
+				  </p>
+				  <p>
+					"Jussuf" is a beast that has a soul.
+				  </p>
+				  <p>
+					Beware of the anger you will pull upon you if he ever finds out you try to compare him 
+					to such a lifeless thing as a carpet.
+				  </p>
+				  <p>
+					His speed and his agility make up for the rather low capacity he is capable to transport.
+				  </p>
+				</td>
+			  </tr>
+
+
+			  <tr>
+				<td> <img src="img/kalli.png"> </td>
+				<td valign="top">
+				  <h4> "Kalli" the camel </h4>
+				  <p>
+					Although his best times have already passed by, "Kalli" is still one of the
+					most valuable companions you might wish to take along in the desert, 
+					unbeaten as well in loyalty as in experience.
+				  </p>
+				  <p>
+					It might seem brave "Kalli" is just another camel, like those
+					seen on daily markets.
+				  </p>
+				  <p>
+					But take him with you just for a day and you will see he makes for 
+					one of the most priceless friends you can depend on at all costs. 
+				  </p>
+				  <p>
+					Due to the years "Kalli" has already seen pass by he might have lost some 
+					of speed but he will still carry almost any weight you might offer without a moan.
+				  </p>
+				</td>
+			  </tr>
+			  <tr>
+				<td> <img src="img/rosa.png"> </td>
+				<td valign="top">
+				  <h4> Falmingo-lady "Rosa" </h4>
+				  <p>
+					As she originates from the far away lands of Jauq'al-Har,
+					"Rosa" might be one of the most exotic birds ever to be seen in the deserts.
+				  <p>
+					Sheik Mussalah-Yissin ibn Salah-Masri al Kwasami brougt her from one
+					of his numerous journeys, as she and her sisters were presented him as a gift.
+				  </p>
+				  <p>
+					Don't be fooled by her lovely and fragile appearence.
+				  </p>
+				  <p>
+					By the lightweight design of her body she is one of the fastest and makes one of
+					the best scouts you might wish for and her pecker is mighty sharp.
+				  </p>
+				</td>
+			  </tr>      
+			 <tr>
+				<td> <img src="img/semira.png"> </td>
+				<td valign="top">
+				  <h4> "Semira" the sphinx </h4>
+				  <p>As an egytian god Semira is a powerfull fighter which shows no merci with any enemy below a god!</p>
+				  <p>As an half eagle and lion she combines power and speed in one unit.</p>
+			  </tr>      
+			 <tr>
+				<td> <img src="img/JinJin.jpg" width="200px" height="200px"> </td>
+				<td valign="top">
+				  <h4> "JinJin" the ghost of on ancient magician. </h4>
+				  <p>JinJin is the dead ghost of an evil ancient magician who looks only for revenge no matter who's the enemy.</p>
+				  <p>As a ghost JinJin is not limited by any physical law and can move fast among the earth surface to fight his enemies to the death.</p>
+			  </tr>
+			</table>
+		</div>
+	  
+		<div id="tab-player">
+		  <p id="player">
+			<h1>Interface Overview?</h1>
+			<p>
+			  <table cellspacing="0">
+				<thead><tr><td>Item from the Game</td><td>Meaning</td></tr></thead>
+				<tbody>			  
+	
+				  <tr>
+					<td><img src="img/guide/player.jpg" /></td>
+					<td>This is one of your complete player units which consists of many different parts, which we will cover below.</td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/range.jpg" /></td>
+					<td>
+					  <p>All player units have a unique range which is limited by a fog surrounding them.</p>
+					  <p>This fog prevents seeing the other player units for tactical reasons.</p>
+					  <p>In order to determine where the enemy units are you have to explore the map which will unconver the range around your units.</p>
+					</td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/selection.jpg" /></td>
+					<td><p>To select a unit you need to klick on it. The selection will be indicated by a circle around the player.</p></td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/marker.jpg" /></td>
+					<td>
+					  <p>Each unit has a marker above their heads which has a color which indicates the owner of the unit.</p>
+					  <p>And each player has a separate color, so all units with the same color belong to one player.</p>
+					  <p>This marker always rotates to indicate the current players turn.</p>
+					</td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/lifebar.jpg" /></td>
+					<td>
+					  <p>Above each unit is a lifebar which can be reduced if the unit is attacked by another unit, no matter if by an enemy or own unit.</p>
+					</td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/trade.jpg" /></td>
+					<td>
+					  <p>The symbols above the players head provide ations that can be accomplished in the current turn.</p>
+					  <p>A mouse click on this symbol and then on an adjacent unit will start a trade.</p>
+					</td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/fight.jpg" /></td>
+					<td><p>A mouse click on this symbol and then a click on an adjacent unit will start an fight.</p></td>
+				  </tr>
+	
+				  <tr>
+					<td><img src="img/guide/walk.jpg" /></td>
+					<td><p>A mouse click on this symbol allows you to mark a path on the game board and to walk the path.</p></td>
+				  </tr>
+				  
+				  <tr>
+					<td><img src="img/guide/select_path.jpg" /></td>
+					<td>
+					  <p>Once you are in selection mode you can select any path on the field and also undo or redo the selctions with the buttons on the right side.</p>
+					  <p>The different colors on the selection indicate your limited range within one move.</p>
+					  <p>Which means you can walk within this round only the <span style="color:limegreen">green</span> colored path.</p>
+					</td>
+				  </tr>
+	
+				</tbody>		
+			  </table>
+			</p>
+		  </p>
+		</div>
+    </div>    
+	
+	<footer>
+	  <div class="mainNavigation" style="float:left;">
+		  <ul class="navigation" style="font-size:14px;">
+			  <li><a href="http://www.gdv.informatik.uni-frankfurt.de/">Made by students of Uni-Frankfurt GDV institute</a></li>
+		  </ul>
+	  </div> 
+    </footer>
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="js/libs/jquery-1.7.1.min.js"></script>
+  <script src="js/libs/jquery.hashchange.min.js"></script>
+  <script src="js/libs/jquery.easytabs.min.js"></script>
+  
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script>
+  <script defer src="js/script.js"></script>
+  <!-- end scripts-->
+  
+  <script>
+  $('#tab-container').easytabs();
+  </script>
+
+</body>
+</html>

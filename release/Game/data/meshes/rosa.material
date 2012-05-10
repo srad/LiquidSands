@@ -1,0 +1,82 @@
+
+// blender material: Material
+material Material 
+{
+    receive_shadows on
+    technique b2ogre_1326375149.902
+    {
+        pass b2ogre_1326375149.903
+        {
+            ambient 0.722077488899231 0.5584509372711182 0.3838915228843689 1.0
+            diffuse 0.7109686051167685 0.5498593849021205 0.37798549980740503 1.0
+            specular 0.0 0.0 0.0 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0
+            
+            cull_hardware clockwise
+            
+            lighting on
+            
+            scene_blend one zero
+            
+			texture_unit b2ogre_1326355183.737
+            {
+                texture rosa_256.png
+                tex_address_mode wrap
+            }
+        }
+    }
+}
+// blender material: Material.001
+material Material.001 
+{
+    receive_shadows on
+    technique b2ogre_1326375149.898
+    {
+        pass b2ogre_1326375149.898
+        {
+            ambient 0.722077488899231 0.5584509372711182 0.3838915228843689 1.0
+            diffuse 0.7109686051167685 0.5498593849021205 0.37798549980740503 1.0
+            specular 0.0 0.0 0.0 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0
+            
+            cull_hardware clockwise
+            
+            lighting on
+            
+            scene_blend one zero
+            
+			texture_unit b2ogre_1326355183.737
+            {
+                texture rosa_256.png
+                tex_address_mode wrap
+            }
+        }
+    }
+}
+// blender material: Material.002
+material Material.002
+{
+    receive_shadows on
+    technique b2ogre_1326375149.898
+    {
+        pass b2ogre_1326375149.898
+        {
+            ambient 0.722077488899231 0.5584509372711182 0.3838915228843689 1.0
+            diffuse 0.7109686051167685 0.5498593849021205 0.37798549980740503 1.0
+            specular 0.0 0.0 0.0 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0
+            
+            cull_hardware clockwise
+            
+            lighting on
+            
+            scene_blend one zero
+            
+			texture_unit b2ogre_1326355183.737
+            {
+                texture rosa_256.png
+                tex_address_mode wrap
+            }
+        }
+    }
+}

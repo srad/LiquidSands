@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!-- Version AB 1.2 -->
+<map-config>
+	<name>basicmap</name>
+	<hexmapcsv>basicmap.csv</hexmapcsv>
+</map-config>

@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty.xsd http://nifty-gui.sourceforge.net/nifty.xsd">
+	<useControls filename="nifty-default-controls.xml" />
+	<useStyles filename="nifty-default-styles.xml" />
+	<!-- This start screen is the initial page that is visible when starting the application -->
+	<screen id="start" controller="de.frankfurt.uni.vcp.gui.controllers.StartScreenController" defaultFocusElement="server_textfield">
+	<layer backgroundColor="#0000" childLayout="vertical" width="*" height="*">
+		<effect>
+		<onStartScreen name="fade" length="800" />
+		<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="800" />
+		</effect>
+		<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#000">
+		<!--<image filename="papyrus_big.png" height="100%" width="100%" filter="true" />-->
+		<image filename="splash_3.jpg" height="100%" width="100%" filter="true" />
+		</panel>
+	</layer>
+	<layer childLayout="vertical" width="100%">
+		<effect>
+		<onStartScreen name="fade" length="800" />
+		<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="800" />
+		</effect>
+		<!-- header -->
+		<!-- center -->
+		<panel childLayout="vertical" height="*" padding="32px,32px" width="100%" align="center">
+		<panel height="35%" />
+		<!--
+		<panel id="settings_panel" childLayout="horizontal" height="54px" width="160px">
+		<interact onClick="test(settings)"/>
+		<image filename="settings_button.png"/>
+		</panel>
+		-->
+		<control id="settings_button" name="button" align="center" label="Settings" width="210px" height="35px">
+			<interact onClick="gotoScreen(settings)" />
+		</control>
+		<panel height="6px" />
+
+		<control id="scenario_button" name="button" align="center" label="Background Story" width="210px" height="35px">
+			<interact onClick="gotoScreen(scenario)" />
+		</control>
+		<panel height="6px" />
+		
+		<control id="help_button" name="button" align="center" label="Game Rules" width="210px" height="35px">
+			<interact onClick="gotoScreen(help)" />
+		</control>		
+		<panel height="6px" />
+		
+		<control id="help2Button" name="button" align="center" label="Help" width="210px" height="35px">
+			<interact onClick="gotoScreen(help2)" />
+		</control>
+		
+		<panel height="*" />
+		<panel childLayout="horizontal" width="300px" align="center" height="32px">
+			<control name="label" text="Your player name: " height="32px" />
+			<panel width="6px" />
+			<control name="textfield" id="playerName_textfield" height="32px" />
+		</panel>
+		<panel height="10px" />
+		<panel childLayout="horizontal" width="300px" align="center" height="32px">
+			<control name="label" text="Server: " height="32px" />
+			<panel width="6px" />
+			<control name="textfield" id="server_textfield" height="32px" />
+		</panel>
+		</panel>
+		<!-- footer -->
+		<panel childLayout="horizontal" height="86px" backgroundColor="#000000" padding="16px,16px">
+		<panel id="quit_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="quitGame()" />
+			<image filename="quit_button.png" />
+		</panel>
+		<panel width="*" />
+		<panel id="resume_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="resumeGame()" />
+			<image filename="resume_button.png" />
+		</panel>
+		<panel width="10px" />
+		<panel id="connect_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="connect()" />
+			<image filename="connect_button.png" />
+		</panel>
+		</panel>
+	</layer>
+	<layer id="Server_error" backgroundColor="#0000" childLayout="center" visible="false">
+		<panel id="server_error_panel" align="center" valign="center" childLayout="vertical" height="75" width="500px" backgroundColor="#000f">
+		<control id="startScreenErrorMessage" name="label" text="Es konnte keine Verbindung aufgebaut werden!" height="40" width="100%" />
+		<image filename="ok.png" align="center" padding="20,20">
+			<interact onClick="ok()" />
+		</image>
+		</panel>
+	</layer>
+	</screen>
+	<screen id="server" controller="de.frankfurt.uni.vcp.gui.controllers.ServerScreenController">
+	<layer backgroundColor="#0000" childLayout="vertical">
+		<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#f008">
+		<image filename="splash_3_no_font.jpg" height="100%" width="100%" />
+		</panel>
+	</layer>
+	<layer childLayout="vertical">
+		<!-- header -->
+		<panel height="86px" childLayout="horizontal" backgroundColor="#000000" padding="16px,16px">
+		<image filename="server_header.png" />
+		</panel>
+		<!-- center -->
+		<panel childLayout="horizontal" height="*" padding="32px,32px">
+		<!-- left -->
+		<panel width="192px" childLayout="vertical">
+			<panel id="create_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="create()" />
+			<image filename="create_button.png" />
+			</panel>
+			<panel height="12px" />
+			<panel id="join_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="join()" />
+			<image filename="join_button.png" />
+			</panel>
+			<panel height="12px" />
+			<!--
+		<panel id="refresh_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="refresh()"/>
+			<image filename="refresh_button.png"/>
+		</panel>
+		-->
+		</panel>
+		<!-- right -->
+		<panel width="50%" childLayout="vertical">
+			<control name="listBox" id="games_listBox" selection="Single" displayItems="8" vertical="optional" horizontal="optional" forceSelection="true" height="100%" />
+		</panel>
+		</panel>
+		<!-- footer -->
+		<panel childLayout="horizontal" height="86px" backgroundColor="#000000" padding="16px,16px">
+		<panel id="cancel_panel" childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="cancel()" />
+			<image filename="back_button.png" />
+		</panel>
+		</panel>
+	</layer>
+	</screen>
+	<screen id="map" controller="de.frankfurt.uni.vcp.gui.controllers.MapScreenController">
+	<layer backgroundColor="#0000" childLayout="vertical">
+		<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#f008">
+		<image filename="splash_3_no_font.jpg" height="100%" width="100%" />
+		</panel>
+	</layer>
+	<layer childLayout="vertical" height="100%">
+		<!-- header -->
+		<panel height="86px" childLayout="horizontal" backgroundColor="#000000" padding="16px,16px">
+			<image filename="map_header.png" />
+		</panel>
+		<!-- center -->
+		<panel childLayout="horizontal" height="*" width="100%">
+		<panel width="50%" height="100%" childLayout="vertical" padding="32px,32px">
+			<!-- MAPS -->
+			<control name="label" text="Please choose the map you want to play on:" align="left" height="32px" color="#000" />
+			<control name="listBox" id="maps_listBox" selection="Single" displayItems="8" vertical="optional" horizontal="optional" forceSelection="true" height="100%" />
+			<!-- NAME -->
+			<panel height="12px" />
+			<panel childLayout="horizontal" width="*" align="center" height="32px">
+			<control name="label" text="Enter a game name please: " height="32px" color="#000" />
+			<panel width="12px" />
+			<control name="textfield" id="game_name_textfield" height="32px" />
+			</panel>
+		</panel>
+		<panel childLayout="center" width="50%" height="100%">
+			<image id="mini_map" filename="minimap.png" height="150px" width="178px" filter="true" align="center" valign="center"/>
+		</panel>
+		</panel>
+		<!-- footer -->
+		<panel childLayout="horizontal" height="86px" backgroundColor="#000000" padding="16px,16px">
+		<panel childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="cancel()" />
+			<image filename="back_button.png" />
+		</panel>
+		<panel width="*" />
+		<panel childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="create()" />
+			<image filename="create_button.png" />
+		</panel>
+		</panel>
+	</layer>
+	<layer id="Map_error" backgroundColor="#0000" childLayout="center" visible="false">
+		<panel id="map_error_panel" align="center" valign="center" childLayout="vertical" height="75" width="300" backgroundColor="#000f">
+		<control id="mapErrorLabel" name="label" width="*" text=" " height="40" />
+		<image filename="ok.png" align="center" padding="20,20">
+			<interact onClick="ok()" />
+		</image>
+		</panel>
+	</layer>
+	</screen>
+	<screen id="player" controller="de.frankfurt.uni.vcp.gui.controllers.PlayerScreenController">
+	<layer backgroundColor="#0000" childLayout="vertical">
+		<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#f008">
+		<image filename="splash_3_no_font.jpg" height="100%" width="100%" />
+		</panel>
+	</layer>
+	<layer childLayout="vertical" height="100%">
+		<!-- header -->
+		<panel height="86px" childLayout="horizontal" backgroundColor="#000000" padding="16px,16px">
+		<image filename="player_header.png" />
+		</panel>
+		<!-- center -->
+		<panel childLayout="horizontal" height="*" padding="36px,36px">
+		<!-- left -->
+		    <panel id="logo_panel" height="300px" width="100%" childLayout="vertical" valign="top">
+			<panel id="playerlist_panel" width="100%" align="center" valign="top" childLayout="vertical">
+			    <control height="30px" name="label" text="Added players:" align="left" color="#000" textHAlign="left" />
+	
+			    <panel childLayout="horizontal" width="*">
+				<control id="players_listBox" name="listBox" vertical="optional" horizontal="optional" displayItems="3" selection="Single" forceSelection="true" align="left" width="*" />
+				<panel width="5px" />
+				<panel id="creatorPanel" visible="false" childLayout="vertical" width="170px">
+				    <control name="button" label="Remove Selected Player" width="*" height="34px">
+					<interact onClick="removePlayer()" />
+				    </control>
+				    <panel height="2px" />
+				    <!--
+				    <control name="button" label="Remove This Game" width="*" height="34px">
+					<interact onClick="removeGame()" />
+				    </control>
+				    -->
+				</panel>
+			    </panel>
+			    <control height="30px" name="label" text="Two players must be in the game to start, wait please for another player..." align="left" color="#000" textHAlign="left" valign="top" />
+			    <panel height="10px" />
+			    <panel width="*" childLayout="vertical">
+				<control height="30px" name="label" text="Lobby Chat:" align="left" color="#000" textHAlign="left" />
+				<control id="chatConsole" name="nifty-console" lines="8" align="left" height="130px" width="*" backgroundColor="#000000aa" />
+			    </panel>
+			</panel>
+		    </panel>
+
+		</panel>
+		<!-- footer -->
+		<panel childLayout="horizontal" height="86px" backgroundColor="#000000" padding="16px,16px">
+		<panel childLayout="horizontal" height="54px" width="160px">
+			<interact onClick="cancel()" />
+			<image filename="cancel_button.png" />
+		</panel>
+		<panel width="*" />
+		<panel id="startButton" childLayout="horizontal" height="54px" width="160px" visible="false">
+			<interact onClick="start()" />
+			<image filename="start_button.png" />
+		</panel>
+		</panel>
+	</layer>
+	<layer id="Player_error" backgroundColor="#0000" childLayout="center" visible="false">
+		<panel id="player_error_panel" align="center" valign="center" childLayout="vertical" height="75" width="300" backgroundColor="#000f">
+		<control id="playerErrorLabel" name="label" width="*" text=" " height="40" />
+		<image filename="ok.png" align="center" padding="20,20">
+			<interact onClick="ok()" />
+		</image>
+		</panel>
+	</layer>
+	</screen>
+	<screen id="hud" controller="de.frankfurt.uni.vcp.gui.controllers.HudScreenController">
+	<layer childLayout="vertical">
+		<panel height="41px" width="*" align="center" childLayout="center" visibleToMouse="true">
+		<image filename="hud_top.png" height="100%" width="100%" filter="true" />
+		</panel>
+	</layer>
+	<layer id="hud_foreground" backgroundColor="#0000" childLayout="vertical" height="*" width="*">
+	<!--
+	====================================================================
+			    HUD: Top Bar
+	====================================================================
+	-->
+	    <panel id="menu_panel" height="30px" width="100%" align="center" valign="center" childLayout="horizontal" padding="9,5,5,5">
+		<control name="button" label="Menu" id="BackButton" align="left" valign="center">
+		    <interact onClick="back()" />
+		</control>
+		<panel width="10px" />
+		<control id="inventoryLabel" name="label" text="" height="100%" width="*" color="#fff" backgroundColor="#000" textHAlign="left" font="Interface/Fonts/Console.fnt" />
+		<panel width="10px" />
+		<control name="button" label="Quick Settings" width="100px" id="quick_options_button" align="right" valign="center">
+		    <interact onClick="quickOptions()" />
+		</control>
+	    </panel>
+	    <panel id="main_panel" height="*" width="100%" align="center" valign="center" childLayout="horizontal" backgroundColor="#0000" visibleToMouse="false">
+		<panel id="quickOptionsPanel" height="500px" width="400px" align="center" valign="top" childLayout="vertical" backgroundColor="#09a0" visibleToMouse="false" visible="false">
+		    <panel childLayout="horizontal" align="left" valign="top" backgroundColor="#444f" height="25px">
+			<control name="label" text="Enable Fog Of War ( F1 )" width="*" valign="center" align="left" />
+			<panel childLayout="vertical" backgroundColor="#8003" height="*" valign="center" width="60%">
+			    <control id="fogOfWarCheckBox" name="checkbox" checked="true" />
+			</panel>
+		    </panel>
+		    <panel childLayout="horizontal" align="left" valign="top" backgroundColor="#444f" height="35px">
+			<control name="label" text="Disable Bloom" width="*" valign="center" align="left" />
+			<panel childLayout="vertical" backgroundColor="#8003" height="*" valign="center" width="60%">
+			    <control id="bloomCheckBox" name="checkbox" visibleToMouse="false" />
+			</panel>
+		    </panel>
+		    <!-- Music controls -->
+		    <!--
+		    <panel childLayout="horizontal" align="left" valign="top" backgroundColor="#444f" height="25px">
+			<control name="label" text="Music Vol." width="*" valign="center" align="left" />
+			<panel childLayout="vertical" backgroundColor="#8003" height="*" valign="center" width="70%">
+			    <control id="musicSliderQuickOptions" name="horizontalSlider" width="*" min="1" max="100" />
+			</panel>
+		    </panel>
+		    <panel childLayout="horizontal" align="left" valign="top" backgroundColor="#444f" height="25px">
+			<control name="label" text="Enable Music" width="*" valign="center" align="left" />
+			<panel childLayout="vertical" backgroundColor="#8003" height="*" valign="center" width="70%">
+			    <control id="musicCheckBoxQuickOptions" name="checkbox" checked="true" />
+			</panel>
+		    </panel>
+		    -->
+		</panel>
+	    </panel>
+	</layer>
+	<!--
+	==========================================================================
+			Bottom HUD: Background image
+	==========================================================================
+	-->
+	<layer height="100%" childLayout="vertical" align="left" valign="bottom" width="100%">
+		<panel height="100%" width="100%" align="left" childLayout="center" visibleToMouse="false">
+		<image filename="hud_bottom.png" height="158px" width="100%" filter="true" valign="bottom" />
+		</panel>
+	</layer>
+	<!-- ========================================================================== -->
+	<!--			Bottom HUD: Mini Hex Map + buttons                  -->
+	<!-- ========================================================================== -->
+	<layer height="100%" childLayout="vertical" align="left" valign="bottom" width="100%" padding="0,42,7,42">
+		<!-- ========================================================================== -->
+		<!--			Bottom HUD: MiniMap                                 -->
+		<!-- ========================================================================== -->
+		<panel id="map_panel" height="100%" width="100%" align="left" childLayout="horizontal" padding="0,0,4,0">
+		<image id="mini_map" filename="minimap.png" height="138px" width="178px" filter="true" valign="bottom">
+			<interact onClick="clickedMap()" />
+		</image>
+		<panel width="3px" />
+		<panel padding="1px" align="left" valign="bottom" childLayout="horizontal">
+			<control id="console" name="nifty-console" lines="8" align="center" valign="bottom" height="136px" width="*" />
+		</panel>
+		<panel width="3px" />
+		<!-- ========================================================================== -->
+		<!--			Bottom HUD: Buttons                                 -->
+		<!-- ========================================================================== -->
+		<panel width="160px" childLayout="vertical" valign="bottom">
+			<panel id="undoRedoPanel" width="100%" childLayout="vertical" align="center" visible="false">
+			<control id="undo_button" name="button" label="Undo Path" height="33px" width="100%">
+				<interact onClick="undo()" />
+			</control>
+			<panel height="1px" />
+			<control id="undo_all_button" name="button" label="Undo All" height="33px" width="100%">
+				<interact onClick="undoAll()" />
+			</control>
+			<panel height="1px" />
+			<control id="redo_button" name="button" label="Redo Path" height="33px" width="100%">
+				<interact onClick="redo()" />
+			</control>
+			<panel height="1px" />
+			</panel>
+			<control name="button" label="Finish Turn!" height="33px" width="100%" id="nextRoundButton" align="right" valign="bottom">
+			<interact onClick="nextRound()" />
+			</control>
+		</panel>
+		</panel>
+	</layer>
+	<!-- ========================================================================== -->
+	<!--		        	Trade dialog                                -->
+	<!-- ========================================================================== -->
+	<layer id="tradeLayer" childLayout="center" visible="false">
+		<effect>
+		<onShow name="move" mode="in" direction="top" length="300" startDelay="10" inherit="true" />
+		<onHide name="move" mode="out" direction="top" length="300" startDelay="10" inherit="true" />
+		</effect>
+		<panel id="trade_panel" height="240" width="400" align="center" valign="center" backgroundImage="papyrus_small.png" visibleToMouse="true" childLayout="vertical" paddingLeft="45px" paddingRight="45px" paddingTop="15px" paddingBottom="5px">
+		<control id="tradedialog_label" name="label" text="Handel" color="#000f" valign="center" align="center" height="20" width="20%" />
+		<panel id="captions_panel" height="20" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control id="caption1_label" name="label" text="biete an" color="#000f" valign="center" align="center" height="20" width="80" />
+			<control id="space1_label" name="label" text=" " valign="center" align="center" height="20" width="*" />
+			<control id="caption2_label" name="label" text="will haben" color="#000f" valign="center" align="center" height="20" width="80" />
+		</panel>
+		<panel id="item1_panel" height="30" width="100%" align="center" valign="center" childLayout="horizontal">
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item1_offer_textfield)" />
+			</image>
+			<control id="item1_offer_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item1_offer_textfield)" />
+			</image>
+			<control id="item1_label" name="label" text="Rubine" color="#000f" valign="center" align="center" height="100%" width="*" />
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item1_want_textfield)" />
+			</image>
+			<control id="item1_want_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item1_want_textfield)" />
+			</image>
+		</panel>
+		<panel id="item2_panel" height="30" width="100%" align="center" valign="center" childLayout="horizontal">
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item2_offer_textfield)" />
+			</image>
+			<control id="item2_offer_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item2_offer_textfield)" />
+			</image>
+			<control id="item2_label" name="label" text="Salz" color="#000f" valign="center" align="center" height="100%" width="*" />
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item2_want_textfield)" />
+			</image>
+			<control id="item2_want_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item2_want_textfield)" />
+			</image>
+		</panel>
+		<panel id="item3_panel" height="30" width="100%" align="center" valign="center" childLayout="horizontal">
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item3_offer_textfield)" />
+			</image>
+			<control id="item3_offer_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item3_offer_textfield)" />
+			</image>
+			<control id="item3_label" name="label" text="Datteln" color="#000f" valign="center" align="center" height="100%" width="*" />
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item3_want_textfield)" />
+			</image>
+			<control id="item3_want_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item3_want_textfield)" />
+			</image>
+		</panel>
+		<panel id="item4_panel" height="30" width="100%" align="center" valign="center" childLayout="horizontal">
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item4_offer_textfield)" />
+			</image>
+			<control id="item4_offer_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item4_offer_textfield)" />
+			</image>
+			<control id="item4_label" name="label" text="Tee" color="#000f" valign="center" align="center" height="100%" width="*" />
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item4_want_textfield)" />
+			</image>
+			<control id="item4_want_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item4_want_textfield)" />
+			</image>
+		</panel>
+		<panel id="item5_panel" height="30" width="100%" align="center" valign="center" childLayout="horizontal">
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item5_offer_textfield)" />
+			</image>
+			<control id="item5_offer_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item5_offer_textfield)" />
+			</image>
+			<control id="item5_label" name="label" text="Wasser" color="#000f" valign="center" align="center" height="100%" width="*" />
+			<image filename="arrow_left.png" height="19" width="19" align="center">
+			<interact onClick="decrease(item5_want_textfield)" />
+			</image>
+			<control id="item5_want_textfield" name="textfield" maxLength="2" valign="center" width="50" />
+			<image filename="arrow_right.png" height="19" width="19" align="center">
+			<interact onClick="increase(item5_want_textfield)" />
+			</image>
+		</panel>
+		<panel id="trade_action_panel" height="20" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="button" label="Angebot zurückziehen" id="reject_offer" align="left" valign="center" width="50%">
+			<interact onClick="toggleVisibility(tradeLayer)" />
+			</control>
+			<control name="button" label="Angebot senden" id="commit_offer" align="left" valign="center" width="50%">
+			<interact onClick="sendOffer()" />
+			</control>
+		</panel>
+		</panel>
+	</layer>
+	<layer id="trade_receiver" childLayout="center" backgroundColor="#0000" visible="false">
+		<effect>
+		<onShow name="move" mode="in" direction="bottom" length="300" startDelay="10" inherit="true" />
+		<onHide name="move" mode="out" direction="bottom" length="300" startDelay="10" inherit="true" />
+		</effect>
+		<panel visibleToMouse="true" height="80" width="400" align="center" valign="center" childLayout="vertical">
+		<control id="offer_message" name="label" text="*****" height="40" width="400" backgroundColor="#0606" />
+		<panel height="40" width="400" align="center" childLayout="horizontal" backgroundColor="#0066">
+			<control name="label" text=" " width="60" />
+			<control id="accept_offer_button" name="button" label="akzeptieren" width="130" height="25" valign="center">
+			<interact onClick="acceptOffer()" />
+			</control>
+			<control name="label" text=" " width="20" />
+			<control id="decline_offer_button" name="button" label="ablehnen" width="130" height="25" valign="center">
+			<interact onClick="declineOffer()" />
+			</control>
+		</panel>
+		</panel>
+	</layer>
+	<layer id="movement_layer" backgroundColor="#0000" childLayout="center" visible="false">
+		<panel height="80px" width="320" align="center" valign="center" childLayout="vertical" backgroundColor="#0007" padding="10px">
+		<effect>
+			<onShow name="move" mode="in" direction="bottom" length="300" startDelay="10" inherit="true" />
+			<onHide name="move" mode="out" direction="bottom" length="300" startDelay="10" inherit="true" />
+		</effect>
+		<control name="label" text="Select movement mode:" align="center" valign="top" color="#ffffff" />
+		<panel childLayout="horizontal" width="100%">
+			<control name="button" id="automatic_button" label="Automatic" width="100px" height="30px">
+			<interact onClick="automaticMovement()" />
+			</control>
+			<control name="button" id="manual_button" label="Ask each round" width="100px" height="30px">
+			<interact onClick="manualMovement()" />
+			</control>
+			<control name="button" id="cancel_button" label="back" width="100px" height="30px">
+			<interact onClick="hide(movement_layer)" />
+			</control>
+		</panel>
+		</panel>
+	</layer>
+	<layer id="Hud_error" backgroundColor="#0000" childLayout="center" visible="false">
+		<effect>
+		<onShow name="move" mode="in" direction="bottom" length="300" startDelay="10" inherit="true" />
+		<onHide name="move" mode="out" direction="bottom" length="300" startDelay="10" inherit="true" />
+		</effect>
+		<panel id="hud_error_panel" align="center" valign="center" childLayout="vertical" height="75" width="300" backgroundColor="#000f">
+		<control id="hudErrorLabel" name="label" width="*" text=" " height="40" />
+		<image filename="ok.png" align="center" padding="20,20">
+			<interact onClick="ok()" />
+		</image>
+		</panel>
+	</layer>
+	</screen>
+	<screen id="scenario" controller="de.frankfurt.uni.vcp.gui.controllers.ScenarioScreenController">
+	<layer backgroundColor="#000" childLayout="vertical">
+		<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#000">
+		<effect>
+			<onStartScreen name="fade" length="800" />
+			<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="500" />
+		</effect>
+		<image filename="papyrus_big.png" height="100%" width="100%" filter="true" />
+		</panel>
+	</layer>
+	<layer childLayout="vertical" padding="50px,40px">
+		<effect>
+		<onStartScreen name="fade" length="800" />
+		<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="800" />
+		</effect>
+		<panel id="caption_panel" height="30" width="100%" align="left" valign="top" childLayout="vertical">
+		<text text="Es war einmal..." font="Interface/Fonts/Default.fnt" color="#000" valign="center" width="100%" height="100%" />
+		</panel>
+		<panel id="scenario_panel" height="*" width="100%" align="left" valign="top" childLayout="vertical" padding="20px,0px">
+		<control name="label" text="Draußen in der fernen Einöde der Wüste wo noch die Gesetze der Natur den Alltag" color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="des Menschen bestimmen herrscht ein gnadenlos erbittlicher Kampf" color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="um alle verbliebenen Ressourcen." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<panel height="40px" width="100%" />
+		<control name="label" text="Man sagt sich im Herzen der Wüste sei die Sonne heißer als die Hölle und der" color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="Sand flüssiger als die Zeit die man hat, bevor man verdurstet und zu Staub zerfällt." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<panel height="40px" width="100%" />
+		<control name="label" text="Du darfst von niemandem Güte erwarten oder Schwäche zeigen." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="Einzig Dein Verstand kann Dir Dein Überleben sichern." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<panel height="40px" width="100%" />
+		<control name="label" text="Mit jedem Geschäft und jedem Zug entscheidest Du über Deine Zukunft und Dein Überleben." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="Mache Geschäfte nur um Dich zu bereichern und greife Deinen Fein an, um ihn zu schwächen." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<panel height="40px" width="100%" />
+		<control name="label" text="Fünf Einheiten stehen an Deiner Seite, um Dir im Kampf und im Handel bei zu stehen." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="Nutze Deine Einheiten mit bedacht, denn sich können nur eine begrenzte Last tragen und Schläge einstecken." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<panel height="40px" width="100%" />
+		<control name="label" text="Dein Gegner wird jede noch so kleine Schwäche dazu benutzen Dich zu vernichten." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		<control name="label" text="Es sei denn Du kommst ihm zuvor..." color="#000" font="Interface/Fonts/Default.fnt" width="100%" />
+		</panel>
+		<panel height="30" width="100%" align="left" valign="top" childLayout="center">
+		<control name="button" label="Back" id="leaveSettings_button" align="center" valign="center">
+			<interact onClick="leaveScenario()" />
+		</control>
+		</panel>
+	</layer>
+	</screen>
+	
+	<screen id="help" controller="de.frankfurt.uni.vcp.gui.controllers.HelpScreenController">
+	<layer backgroundColor="#000" childLayout="vertical">
+		<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#000">
+		<effect>
+			<onStartScreen name="fade" length="800" />
+			<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="500" />
+		</effect>
+		<image filename="papyrus_big.png" height="100%" width="100%" filter="true" />
+		</panel>
+	</layer>
+	<layer childLayout="vertical" padding="50px,40px">
+		<effect>
+		<onStartScreen name="fade" length="800" />
+		<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="800" />
+		</effect>
+		<panel height="30" width="100%" align="left" valign="top" childLayout="vertical">
+		<text text="Spielregeln" font="Interface/Fonts/Default.fnt" color="#000" valign="center" width="100%" height="100%" />
+		</panel>
+		<control id="scrollbarPanelId" name="scrollPanel" horizontal="false" vertical="true" height="*" width="*" padding="20px,100px">
+		<panel height="400%" width="100%" align="left" valign="top" childLayout="vertical" padding="10px">
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="1. Momentan können am Spiel 2 Spieler teilnehmen." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="2. Gewinner ist wer als letzter überlebt oder die meisten Waren hat (noch nicht fertig implementiert!)." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="3. Jeder Spieler bekommt eine Farbe zugewiesen und seine Spielfiguren werden in dieser Farbe markiert mit einem Symbol über der Einheit." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="4. Der Spieler der momentan dran ist erkennt das an der kreisenden Markierung über seinen Einheiten." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="5. Ob die eigene Einheit in dieser Runde bereits gezogen wurde erkennt man dadurch, dass das Symbol über dem Kopf nicht mehr kreist." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="6. Abhängig von der Karte haben die Spieler bis zu 5 Einheiten mit unterschiedlichen Eigenschaften zur Verfügung." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="7. Eine Eigenschaft ist z.B. die Reichweite in der eine Einheit laufen kann pro Zug oder die Last die sie tragen kann." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="8. Die Sichtweite der Einheiten ist durch einen Nebelschleier begrenzt, der Felder außerhalb der Sichtweite verdeckt." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="9. Zuerst beginnt der Spieler mit der grünen Farbe." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="10. Das Spiel verläuft in Runden, d.h. die Spieler sind abwechselnd dran und jede Einheit darf pro Runde nur einmal gezogen werden." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="11. Eine Runde ist vorbei, sobald alle Figuren einen Zug vollendet haben." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" " />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="12. Ein vollendeter Zug besteht aus folgenden Handlungen:" />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" 12.1. Bewegen einer Figur bis zu ihrer aktuellen Maximalreichweite, danach können optional folgende Handlungen ausgeführt werden:" />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="  12.1.1. Falls am Ende des Bewegens neben der Figur eine andere Einheit steht, dann kann noch mit dieser Figur gekämpft oder gehandelt werden unabhängig davon, ob es eigene oder gegnerische Einheiten sind." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="  12.1.2. Kampf oder Handel wird gestartet durch die Buttons am rechten Rand 'Fight/Trade' und dann durch einen einfachen Mausklick auf die benachbarte Einheit." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="  12.1.3. Falls am Ende des Bewegens keine andere Figur neben der bewegten Einheit steht, ist der Zug vorbei." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" 12.2. Sobald der Zug vorbei ist markiert man das mit dem Button 'I'm done with my move' oben rechts." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" " />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="13. Das Bewegen der eigenen Einheit kann nach folgenden Methoden ablaufen:" />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" 13.1. Falls der selektierte Pfad den die Einheit zurück legen soll länger ist, als die pro Runde erlaubte Maximalreichweite, dann besteht die Möglichkeit Bewegungen zu planen:" />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="  13.1.1. Entweder in der nächsten Runde automatisch den markierten weg weiter laufen ohne Nachfrage (automatischer Modus)." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="  13.1.2. oder nochmal nachgefragt zu werden, ob der Weg auch tatsächlich weiter verfolgt werden soll der vorher markiert wurde (manueller Modus)." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" 13.2. Das Planungsmenü für die Bewegung erscheint durch selektieren einer Einheit dann eines Pfads mit einfachem Mausklick und danach durch einen Rechtsklick." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text=" 13.3. Mit 'Undo' und 'Redo' kann die Pfad-Markierung auch rückgängig gemacht oder wiederholt werden." />
+			<panel height="10px" />
+			<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="14. Das vollenden des Spiels ist momentan noch nicht fertig implementiert, daher kann es nur manuell beendet werden." />
+		</panel>
+		</control>
+		<panel height="30" width="100%" align="left" valign="top" childLayout="center">
+		<control name="button" label="Back" align="center" valign="center">
+			<interact onClick="gotoStartScreen()" />
+		</control>
+		</panel>
+	</layer>
+	</screen>
+	
+	<!--
+	==========================================================================
+			Help2 Screen controller, shows hotkeys and stuff...
+	==========================================================================
+	-->
+	<screen id="help2" controller="de.frankfurt.uni.vcp.gui.controllers.Help2ScreenController">
+		<layer backgroundColor="#000" childLayout="vertical">
+			<panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#000">
+			<effect>
+				<onStartScreen name="fade" length="800" />
+				<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="500" />
+			</effect>
+			<image filename="papyrus_big.png" height="100%" width="100%" filter="true" />
+			</panel>
+		</layer>
+		
+		<layer childLayout="vertical" padding="50px,40px">
+			<effect>
+				<onStartScreen name="fade" length="800" />
+				<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="800" />
+			</effect>
+			
+			<panel height="30" width="100%" align="left" valign="top" childLayout="vertical">
+				<text text="Help" font="Interface/Fonts/Default.fnt" color="#000" valign="center" width="100%" height="100%" />
+			</panel>
+			
+			<control id="scrollbarPanelId" name="scrollPanel" horizontal="false" vertical="true" height="*" width="*" padding="20px,100px">
+				<panel height="220%" width="100%" align="left" valign="top" childLayout="vertical" padding="10px">
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="Game HotKeys:" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	w - Move up" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	s - Move down" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	a - Move left" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	d - Move right" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	u - Undo path selection" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	r - redo path selection" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	f - fight mode" />
+					<panel height="10px" />
+					<text width="100%" wrap="true" textHAlign="left" align="left" color="#000" font="Interface/Fonts/Default.fnt" text="	t - trade mode" />
+					<panel height="20px" />
+				</panel>
+			</control>
+			
+			<panel height="30" width="100%" align="left" valign="top" childLayout="center">
+				<control name="button" label="Back" align="center" valign="center">
+					<interact onClick="gotoStartScreen()" />
+				</control>
+			</panel>
+		</layer>		
+	</screen>
+	
+    <screen id="settings" controller="de.frankfurt.uni.vcp.gui.controllers.SettingsScreenController">
+	<layer id="backgroundSettings" backgroundColor="#000" childLayout="vertical">
+	    <panel height="100%" width="100%" align="center" childLayout="center" backgroundColor="#000">
+	    <effect>
+		<onStartScreen name="fade" length="800" />
+		<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="500" />
+	    </effect>
+	    <image filename="papyrus_big.png" height="100%" width="100%" filter="true" />
+	    </panel>
+        </layer>
+    
+        <layer id="foreground" childLayout="vertical" padding="20px,70px">
+	    <panel id="foregroundSettings" childLayout="horizontal">
+		<panel id="graphics" height="90%" width="50%" align="center" valign="center" childLayout="vertical">
+		    
+		    <effect>
+			<onStartScreen name="fade" length="800" />
+			<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="500" />
+		    </effect>
+		    
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="center">
+			<text text="Video Settings" color="#000" font="Interface/Fonts/Default.fnt" valign="center" width="100%" height="100%" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="label" color="#000" text="Auflösung" valign="center" width="40%" />
+			<control id="resolution_dropDown" name="dropDown" valign="center" width="50%" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="label" color="#000" text="Vollbild" valign="center" width="40%" />
+			<control id="fullscreen_checkBox" name="checkbox" valign="center" width="25px" height="25px" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="label" color="#000" text="Antialiasing" valign="center" width="40%" />
+			<control id="antialias_dropDown" name="dropDown" valign="center" width="50%" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="label" color="#000" text="Gamma" valign="center" width="40%" />
+			<control id="gamma_slider" name="horizontalSlider" valign="center" width="50%" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="label" color="#000" text="V-Sync" valign="center" width="40%" />
+			<control id="vsync_checkBox" name="checkbox" valign="center" width="25px" height="25px" />
+		    </panel>
+		</panel>
+		<panel id="right" height="90%" width="50%" align="center" valign="center" childLayout="vertical">
+		    <effect>
+			<onStartScreen name="fade" length="800" />
+			<onEndScreen name="fade" startColor="#ffff" endColor="#0000" length="500" />
+		    </effect>
+		    <panel height="100%" width="100%" align="center" valign="center" childLayout="vertical">
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="center">
+			    <text text="Audio Settings" color="#000" font="Interface/Fonts/Default.fnt" valign="center" width="100%" height="100%" />
+		    </panel>
+		    
+		    <!--
+		    <control name="label" color="#000" text="Sound" valign="center" width="30%" />
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			    <control name="label" color="#000" text="Sound Volume" valign="center" width="30%" />
+			    <control name="horizontalSlider" valign="center" width="50%" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			    <control name="label" color="#000" text="Mute Sound" valign="center" width="30%" />
+			    <control name="checkbox" valign="center" width="25px" height="25px" />
+		    </panel>
+		    -->
+		    
+		    <control name="label" color="#000" text="Music" valign="center" width="30%" />
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			    <control name="label" color="#000" text="Music Volume" valign="center" width="30%" />
+			    <control id="musicVolumeSettings" name="horizontalSlider" valign="center" width="50%" min="0" max="1" stepSize="0.1" buttonStepSize="0.1" initial="1" />
+		    </panel>
+		    <panel height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+			<control name="label" color="#000" text="Mute Music" valign="center" width="30%" />
+			<control id="mute_music_checkbox" name="checkbox" valign="center" width="25px" height="25px" visibleToMouse="true" />
+		    </panel>
+		    </panel>
+		</panel>
+	    </panel>
+	    <panel id="back_panel" height="10%" width="100%" align="center" valign="center" childLayout="horizontal">
+		<panel id="leaveSettings_panel" height="100%" width="50%" align="center" valign="center" childLayout="center">
+		    <control name="button" label="Back" id="leaveSettings_button" align="center" valign="center">
+			<interact onClick="leaveSettings()" />
+		    </control>
+		</panel>
+		<panel id="applySettings_panel" height="100%" width="50%" align="center" valign="center" childLayout="center">
+		    <control name="button" label="Apply Settings" id="applySettings_button" align="center" valign="center">
+			<interact onClick="applySettings()" />
+		    </control>
+		</panel>
+	    </panel>
+	</layer>
+    </screen>
+
+</nifty>

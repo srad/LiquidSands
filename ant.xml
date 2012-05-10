@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project RiverRaid with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/release/liquid.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="de.frankfurt.uni.vcp.Main"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ log4j-1.2.16.jar j-ogg-oggd.jar j-ogg-vorbisd.jar jbullet.jar stack-alloc.jar vecmath.jar lwjgl.jar jME3-lwjgl-natives.jar jinput.jar eventbus.jar nifty-default-controls.jar nifty-examples.jar nifty-style-black.jar nifty.jar xmlpull-xpp3.jar jME3-testdata.jar noise-0.0.1-SNAPSHOT.jar jME3-core.jar jME3-plugins.jar jME3-jogg.jar jME3-desktop.jar jME3-blender.jar jME3-terrain.jar jME3-jbullet.jar jME3-niftygui.jar jME3-lwjgl.jar jMonkeyEngine3.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/bin"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib" includes="log4j-1.2.16.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="j-ogg-oggd.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="j-ogg-vorbisd.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jbullet.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="stack-alloc.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="vecmath.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="lwjgl.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-lwjgl-natives.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jinput.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="eventbus.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="nifty-default-controls.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="nifty-examples.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="nifty-style-black.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="nifty.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="xmlpull-xpp3.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-testdata.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="noise-0.0.1-SNAPSHOT.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-core.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-plugins.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-jogg.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-desktop.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-blender.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-terrain.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-jbullet.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-niftygui.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13/lib" includes="jME3-lwjgl.jar"/>
+            <zipfileset dir="/home/users1/bcio/spaeth/Uni/src/gdv-pr/RiverRaid/lib/JME_2012_12_13" includes="jMonkeyEngine3.jar"/>
+        </jar>
+    </target>
+</project>

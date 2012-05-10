@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Meeple>
+	<MeepleName>test-meeple</Meeple>
+	<Movement> 12 </Movement>
+	<Hitpoints> 10 </Hitpoints>
+	<MaxFirepower> 10 </MaxFirepower>
+	<MaxCargo> 10 </MaxCargo>
+</Meeple>

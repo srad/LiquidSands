@@ -1,0 +1,26 @@
+1. Momentan können am Spiel 2 Spieler teil nehmen.
+2. Gewinner ist wer als letzer überlebt oder die meisten Waren hat (noch nicht fertig implementiert!).
+3. Jeder Spieler bekommt eine Farbe zugewiesen und seine Spielfiguren werden in dieser Farbe markiert mit einem Symbol über der Einheit.
+4. Der Spieler der momentan dran ist erkennt das an der kreisenden Markierung über seinen Einheiten.
+5. Ob die eigene Einheit in dieser Runde bereits gezogen wurde erkennt man dadurch, dass das Symbol über dem Kopf nicht mehr kreist.
+6. Abhängig von der Karte haben die Spieler bis zu 5 Einheiten mit unterschiedlichen Eigenschaften zur Verfügung.
+7. Eine Eigenschaft ist z.B. die Reichweite in der eine Einheit laufen kann pro Zug oder die Last die sie tragen kann.
+8. Die Sichtweite der Einheiten ist durch einen Nebelschleier begrenzt, der Felder außerhalb der Sichtweite verdeckt.
+9. Zuerst beginnt der Spieler mit der grünen Farbe.
+10. Das Spiel verläuft in Runden, d.h. die Spieler sind abwechselnd dran und jede Einheit darf pro Runde nur einmal gezogen werden.
+11. Eine Runde ist vorbei, sobald alle Figuren einen Zug vollendet haben.
+
+12. Ein vollendeter Zug besteht aus folgenden Handlungen:
+	12.1. Bewegen einer Figur bis zu ihrer aktuellen Maximalreichweite, danach können optional folgende Handlungen ausgeführt werden:
+		12.1.1. Falls am Ende des Bewegens neben der Figur eine andere Einheit steht, dann kann noch mit dieser Figur gekämpft oder gehandelt werden unabhängig davon, ob es eigene oder gegnerische Einheiten sind.
+		12.1.2. Kampf oder Handel wird gestartet durch die Button am rechten Rand "Fight/Trade" und dann durch einen einfachen Mausklick auf die benachbarte Einheit.
+		12.1.3. Falls am Ende des Bewegens keine andere Figur neben der bewegten Einheit steht, ist der Zug vorbei.
+	12.2. Sobald der Zug vorbei ist markiert man das mit dem Button "I'm done with my move" oben rechts.
+
+13. Das Bewegen der eigenen Einheit kann nach folgenden Methoden ablaufen:
+	13.1. Falls der selektierte Pfad den die Einheit zurück liegen soll länger ist, als in der momentanen Runde gelaufen werden kann, dann besteht die Möglichkeit:
+		13.1.1. Entweder in der nächsten Runde automatisch zu laufen (automatischer Modus).
+		13.1.2. oder nochmal nachgefragt zu werden, ob der Weg auch tatsächlich weiter verfolgt werden soll (manueller Modus).
+	13.2. Das Planungsmenü erscheint durch selektieren eines Pfads mit einfachem Mausklick und dannach durch einen Rechtsklick.
+
+14. Das vollenden des Spiels ist momentan noch nicht fertig implementiert, daher kann es nur manuell beendet werden.

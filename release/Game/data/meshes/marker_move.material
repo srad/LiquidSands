@@ -1,0 +1,29 @@
+
+// blender material: Material
+material Material 
+{
+    receive_shadows on
+    technique b2ogre_1326663530.331
+    {
+        pass b2ogre_1326355183.736
+        {
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            specular 0.0 0.0 0.0 1.0 12.5
+            emissive 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            
+            cull_hardware clockwise
+            
+            lighting on
+            
+            scene_blend one zero
+            
+            
+            texture_unit b2ogre_1326355183.737
+            {
+                texture move.png
+                tex_address_mode wrap
+            }
+        }
+    }
+}

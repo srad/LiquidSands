@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>No Comment</comment>
+<entry key="server.port">1504</entry>
+<entry key="server.id">POV_Server_001</entry>
+<entry key="server.xframeoffset">1200</entry>
+<entry key="server.title">POV-GameServer v0.6.7</entry>
+</properties>
