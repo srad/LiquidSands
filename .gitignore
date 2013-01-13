@@ -17,6 +17,7 @@ local.properties
 *.dll
 *.so
 *.dat
+*.dat.*
 
 # External tool builders
 .externalToolBuilders/
