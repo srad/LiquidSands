@@ -10,9 +10,11 @@ Some notes:
 
 * It has been written by three students (one was I) and it was our first game project ever.
 * The guideline was to use the jMonkeyEngine Java game engine.
-* The game had to be
-* a round based Strategy game
-* on a hexagon field
+
+The game had to follow these guidelines:
+
+* be a round based Strategy game
+* play on a hexagon field
 * where two players play over a server against each other
 * and the maps are provided by the game server and must be generated dynamically by the game
 
